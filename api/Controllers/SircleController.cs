@@ -8,6 +8,7 @@ using System.Net.Mime;
 
 namespace api.Controllers
 {
+    /*
     [Route("api/[controller]")]
     [ApiController]
     public class SircleController : ControllerBase
@@ -25,6 +26,6 @@ namespace api.Controllers
 
             return answer;
         }
-
     }
+    */
 }

@@ -47,7 +47,7 @@
           "dependencies": {
             "GraphQL": {
               "target": "Package",
-              "version": "[7.3.0, )"
+              "version": "[7.8.0, )"
             },
             "Microsoft.AspNetCore.Cors": {
               "target": "Package",
@@ -59,11 +59,15 @@
             },
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
               "target": "Package",
-              "version": "[1.17.2, )"
+              "version": "[1.19.6, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.2.3, )"
+              "version": "[6.5.0, )"
+            },
+            "System.Net.WebSockets": {
+              "target": "Package",
+              "version": "[4.3.0, )"
             }
           },
           "imports": [
