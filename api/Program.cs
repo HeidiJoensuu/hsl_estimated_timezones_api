@@ -1,78 +1,55 @@
-using System.Net;
-using System.Net.WebSockets;
-using System.Text;
-
-var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
-builder.WebHost.UseUrls("http://localhost:3001");
 
 // Add services to the container.
-/*
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy(name: MyAllowSpecificOrigins,
-                      policy =>
-                      {
-                          policy.WithOrigins("*").AllowAnyHeader().AllowAnyMethod();
-                      });
-});
 
 builder.Services.AddControllers();
-
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-*/
-//builder.Services.AddSwaggerGen();
-
-
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-/*
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-*/
+var webSocketOptions = new WebSocketOptions { };
+webSocketOptions.AllowedOrigins.Add("http://localhost:3000");
+
 app.UseWebSockets();
 
-app.Map("/ws", async context =>
+app.UseHttpsRedirection();
+
+app.UseAuthorization();
+
+app.MapControllers();
+
+/*
+app.Use(async (context, next) =>
 {
-    if (context.WebSockets.IsWebSocketRequest)
+    if (context.Request.Path == "/ws")
     {
-        using var ws = await context.WebSockets.AcceptWebSocketAsync();
-        while (true)
+        if (context.WebSockets.IsWebSocketRequest)
         {
-            var message = "Curren time is : " + DateTime.Now.ToString("HH:mm:ss");
-            var bytes = Encoding.UTF8.GetBytes(message);
-            var arraySegment = new ArraySegment<byte>(bytes, 0, bytes.Length);
-            if (ws.State == WebSocketState.Open)
-            {
-                await ws.SendAsync(arraySegment, WebSocketMessageType.Text, true, CancellationToken.None);
-            }
-            else if (ws.State == WebSocketState.Closed || ws.State == WebSocketState.Aborted)
-            {
-                break;
-            }
-            Thread.Sleep(1000);
-                
+            using var webSocket = await context.WebSockets.AcceptWebSocketAsync();
+            await Echo(webSocket);
         }
-        
+        else
+        {
+            context.Response.StatusCode = StatusCodes.Status400BadRequest;
+            await context.Response.WriteAsync("Expected a WebSocket request");
+            Console.WriteLine("jotain tapahtui");
+        }
     }
     else
     {
-        context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-        await context.Response.WriteAsync("Expected a WebSocket request");
-        Console.WriteLine("jotain tapahtui");
+        await next(context);
     }
+
+
 });
-//app.UseCors(MyAllowSpecificOrigins);
+*/
 
-//app.UseHttpsRedirection();
-
-//app.UseAuthorization();
-
-//app.MapControllers();
-
-await app.RunAsync();
+app.Run();
