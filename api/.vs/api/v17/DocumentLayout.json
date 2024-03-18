@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Heidi\\Documents\\Koodausta\\HSL-reittiajat\\testia\\api\\",
+  "WorkspaceRootPath": "C:\\Users\\Heidi\\Documents\\Koodausta\\HSL-reittiajat\\hsl_estimated_timezones_api\\api\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{238B1A5E-5736-4F39-BBC8-BB9464C6AE59}|api.csproj|c:\\users\\heidi\\documents\\koodausta\\hsl-reittiajat\\testia\\api\\controllers\\websocketcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{238B1A5E-5736-4F39-BBC8-BB9464C6AE59}|api.csproj|c:\\users\\heidi\\documents\\koodausta\\hsl-reittiajat\\hsl_estimated_timezones_api\\api\\controllers\\websocketcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{238B1A5E-5736-4F39-BBC8-BB9464C6AE59}|api.csproj|solutionrelative:controllers\\websocketcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{238B1A5E-5736-4F39-BBC8-BB9464C6AE59}|api.csproj|c:\\users\\heidi\\documents\\koodausta\\hsl-reittiajat\\testia\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{238B1A5E-5736-4F39-BBC8-BB9464C6AE59}|api.csproj|c:\\users\\heidi\\documents\\koodausta\\hsl-reittiajat\\hsl_estimated_timezones_api\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{238B1A5E-5736-4F39-BBC8-BB9464C6AE59}|api.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -24,11 +24,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "WebSocketController.cs",
-              "DocumentMoniker": "C:\\Users\\Heidi\\Documents\\Koodausta\\HSL-reittiajat\\testia\\api\\Controllers\\WebSocketController.cs",
+              "DocumentMoniker": "C:\\Users\\Heidi\\Documents\\Koodausta\\HSL-reittiajat\\hsl_estimated_timezones_api\\api\\Controllers\\WebSocketController.cs",
               "RelativeDocumentMoniker": "Controllers\\WebSocketController.cs",
-              "ToolTip": "C:\\Users\\Heidi\\Documents\\Koodausta\\HSL-reittiajat\\testia\\api\\Controllers\\WebSocketController.cs",
+              "ToolTip": "C:\\Users\\Heidi\\Documents\\Koodausta\\HSL-reittiajat\\hsl_estimated_timezones_api\\api\\Controllers\\WebSocketController.cs",
               "RelativeToolTip": "Controllers\\WebSocketController.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAA1wCAAAABzAAAA",
+              "ViewState": "AQIAABcAAAAAAAAAAAAgwCsAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-09T15:40:26.923Z",
               "EditorCaption": ""
@@ -37,14 +37,13 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Heidi\\Documents\\Koodausta\\HSL-reittiajat\\testia\\api\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\Heidi\\Documents\\Koodausta\\HSL-reittiajat\\hsl_estimated_timezones_api\\api\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\Heidi\\Documents\\Koodausta\\HSL-reittiajat\\testia\\api\\Program.cs",
+              "ToolTip": "C:\\Users\\Heidi\\Documents\\Koodausta\\HSL-reittiajat\\hsl_estimated_timezones_api\\api\\Program.cs",
               "RelativeToolTip": "Program.cs",
               "ViewState": "AQIAAAYAAAAAAAAAAAAAACkAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-09T15:32:36.623Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-09T15:32:36.623Z"
             }
           ]
         }

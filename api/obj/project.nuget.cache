@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bPwJwZmauwY/uED+OfIauqucPQHrGfllcFtjbPbZuXGZxH3800Qu5YATPQqUxRjFS5ZDzyfepvMjOkDpVJR5Gg==",
+  "dgSpecHash": "lrZZ/nbyYDt0jQsChJj66mPqg30stuCT4srlNK+O6figPskxzh77v6tvJ+LMzVZtd9DR/8JVNipuhZgLOwF18A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Heidi\\Documents\\Koodausta\\HSL-reittiajat\\testia\\api\\api.csproj",
+  "projectFilePath": "C:\\Users\\Heidi\\Documents\\Koodausta\\HSL-reittiajat\\hsl_estimated_timezones_api\\api\\api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Heidi\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\Heidi\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",

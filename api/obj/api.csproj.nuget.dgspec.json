@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Heidi\\Documents\\Koodausta\\HSL-reittiajat\\testia\\api\\api.csproj": {}
+    "C:\\Users\\Heidi\\Documents\\Koodausta\\HSL-reittiajat\\hsl_estimated_timezones_api\\api\\api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Heidi\\Documents\\Koodausta\\HSL-reittiajat\\testia\\api\\api.csproj": {
+    "C:\\Users\\Heidi\\Documents\\Koodausta\\HSL-reittiajat\\hsl_estimated_timezones_api\\api\\api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Heidi\\Documents\\Koodausta\\HSL-reittiajat\\testia\\api\\api.csproj",
+        "projectUniqueName": "C:\\Users\\Heidi\\Documents\\Koodausta\\HSL-reittiajat\\hsl_estimated_timezones_api\\api\\api.csproj",
         "projectName": "api",
-        "projectPath": "C:\\Users\\Heidi\\Documents\\Koodausta\\HSL-reittiajat\\testia\\api\\api.csproj",
+        "projectPath": "C:\\Users\\Heidi\\Documents\\Koodausta\\HSL-reittiajat\\hsl_estimated_timezones_api\\api\\api.csproj",
         "packagesPath": "C:\\Users\\Heidi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Heidi\\Documents\\Koodausta\\HSL-reittiajat\\testia\\api\\obj\\",
+        "outputPath": "C:\\Users\\Heidi\\Documents\\Koodausta\\HSL-reittiajat\\hsl_estimated_timezones_api\\api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
