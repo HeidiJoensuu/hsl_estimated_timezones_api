@@ -8,7 +8,7 @@ using System.Text.Json.Serialization;
 namespace api.Controllers
 {
     [ApiController]
-    [Route("/ws")]
+    [Route("/ws/points")]
     public class WebSocketController : ControllerBase
     {
         [HttpGet]
@@ -39,10 +39,8 @@ namespace api.Controllers
             while (!receiveResult.CloseStatus.HasValue)
             {
                 byte[] bytes = Encoding.Default.GetBytes(jei);
-                jei = Encoding.UTF8.GetString(bytes);
                 await webSocket.SendAsync(
                     bytes,
-                    //new ArraySegment<byte>(buffer, 0, receiveResult.Count),
                     receiveResult.MessageType,
                     receiveResult.EndOfMessage,
                     CancellationToken.None
