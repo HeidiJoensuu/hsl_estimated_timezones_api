@@ -30,3 +30,11 @@ C:\Users\iltaj\Documents\Koodaus\PK-matka-ajat\api1\bin\Debug\net8.0\Swashbuckle
 C:\Users\iltaj\Documents\Koodaus\PK-matka-ajat\api1\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\iltaj\Documents\Koodaus\PK-matka-ajat\api1\obj\Debug\net8.0\api1.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\iltaj\Documents\Koodaus\PK-matka-ajat\api1\obj\Debug\net8.0\api1.csproj.Up2Date
+C:\Users\iltaj\Documents\Koodaus\PK-matka-ajat\api1\obj\Debug\net8.0\api1.sourcelink.json
+C:\Users\iltaj\Documents\Koodaus\PK-matka-ajat\api1\bin\Debug\net8.0\GraphQL.Client.dll
+C:\Users\iltaj\Documents\Koodaus\PK-matka-ajat\api1\bin\Debug\net8.0\GraphQL.Client.Abstractions.dll
+C:\Users\iltaj\Documents\Koodaus\PK-matka-ajat\api1\bin\Debug\net8.0\GraphQL.Client.Abstractions.Websocket.dll
+C:\Users\iltaj\Documents\Koodaus\PK-matka-ajat\api1\bin\Debug\net8.0\GraphQL.Client.Serializer.Newtonsoft.dll
+C:\Users\iltaj\Documents\Koodaus\PK-matka-ajat\api1\bin\Debug\net8.0\GraphQL.Primitives.dll
+C:\Users\iltaj\Documents\Koodaus\PK-matka-ajat\api1\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\iltaj\Documents\Koodaus\PK-matka-ajat\api1\bin\Debug\net8.0\System.Reactive.dll

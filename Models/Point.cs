@@ -2,13 +2,15 @@
 {
     public class Point
     {
-        public Guid id { get; set; }
-        public Coordinates coordinates { get; set; }
+        public Guid Id { get; set; }
+        public Coordinates Coordinates { get; set; }
+
+        public long? Duration { get; set; }
 
         public Point(Guid id, Coordinates coordinates)
         {
-            this.id = id;
-            this.coordinates = coordinates;
+            this.Id = id;
+            this.Coordinates = coordinates;
         }
     }
 }
