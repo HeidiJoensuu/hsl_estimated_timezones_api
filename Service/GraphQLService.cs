@@ -34,7 +34,8 @@ namespace api1.GraphQL
             var graphQLClient = new GraphQLHttpClient(
                 "https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql?digitransit-subscription-key=" + _config["digitransit-subscription-key"],
                 new NewtonsoftJsonSerializer());
-
+        //date: {{startDate}},
+        //time: { { startTime} }
             var testiRequest = new GraphQLRequest
             {
                 Query = $$"""
@@ -44,6 +45,7 @@ namespace api1.GraphQL
                     to: { lat: {{toLat}}, lon: {{toLon}} },
                     numItineraries: 4
                     allowedTicketTypes: "HSL:ABCD"
+                    
                 ) {
                     itineraries {
                         duration

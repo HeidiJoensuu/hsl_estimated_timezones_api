@@ -37,6 +37,7 @@ namespace api1.Controllers
                 Console.WriteLine("Huono yhteys");
             }
         }
+
         private async Task Echo(WebSocket webSocket)
         {
             
@@ -53,30 +54,34 @@ namespace api1.Controllers
                 var webSocketMessage = new ArraySegment<byte>(buffer, 0, receiveResult.Count);
                 string jsonString = ascii.GetString(webSocketMessage);
 
-                if (!jsonString.Equals("Connection established")) {
-                    Coordinates firstCoords = JsonSerializer.Deserialize<Coordinates>(jsonString);
-
-                    firstCoords.lat = Math.Round(firstCoords.lat, 6);
-                    firstCoords.lng = Math.Round(firstCoords.lng, 6);
-                    coordinates.Add(firstCoords);
-
-                    int count = 0;
-                    await CoordinatesLoop(firstCoords, jsonString, coordinates, webSocket, count);
-                    //jsonString = WebSocketController.NewCoordinates(jsonString);
- 
-                } 
-                else
+                if (!jsonString.Equals("Connection established") && jsonString != null)
                 {
-                    await webSocket.SendAsync(
-                        new ArraySegment<byte>(buffer, 0, receiveResult.Count),
-                        receiveResult.MessageType,
-                        receiveResult.EndOfMessage,
-                        CancellationToken.None);
-                }
-                receiveResult = await webSocket.ReceiveAsync(
-                    new ArraySegment<byte>(buffer), CancellationToken.None);
-            }
+                    RequestType request = JsonSerializer.Deserialize<RequestType>(jsonString);
+                    if (request != null)
+                    {
+                        Coordinates firstCoords = request.coordinates;
 
+                        firstCoords.lat = Math.Round(firstCoords.lat, 6);
+                        firstCoords.lng = Math.Round(firstCoords.lng, 6);
+
+                        coordinates.Add(firstCoords);
+                        double rotaitingAngle = 2 * Math.PI / 12;
+                        await CoordinatesLoop(firstCoords, firstCoords, rotaitingAngle, coordinates, webSocket);
+                        //jsonString = WebSocketController.NewCoordinates(jsonString);
+
+                    }
+                    else
+                    {
+                        await webSocket.SendAsync(
+                            new ArraySegment<byte>(buffer, 0, receiveResult.Count),
+                            receiveResult.MessageType,
+                            receiveResult.EndOfMessage,
+                            CancellationToken.None);
+                    }
+                    receiveResult = await webSocket.ReceiveAsync(
+                        new ArraySegment<byte>(buffer), CancellationToken.None);
+                }
+}
             await webSocket.CloseAsync(
                 receiveResult.CloseStatus.Value,
                 receiveResult.CloseStatusDescription,
@@ -84,12 +89,11 @@ namespace api1.Controllers
         }
 
 
-        private async Task CoordinatesLoop(Coordinates firstCoords, string currentCoordinates, List<Coordinates> coordinates, WebSocket webSocket, int count)
+        private async Task CoordinatesLoop(Coordinates firstCoords, Coordinates currentCoordinates, double rotaitingAngle, List<Coordinates> coordinates, WebSocket webSocket)
         {
-            double rotaitingAngle = 2 * Math.PI / 12;
-            var startingCoordinates = JsonSerializer.Deserialize<Coordinates>(currentCoordinates);
             
-            List<Coordinates> NewCoordinates = WebSocketController.NewCoordinates(startingCoordinates, rotaitingAngle);
+            
+            List<Coordinates> NewCoordinates = WebSocketController.NewCoordinates(currentCoordinates, rotaitingAngle);
             foreach (var item in NewCoordinates)
             {
                 if (!coordinates.Exists(c => c.lng == item.lng && c.lat == item.lat))
@@ -97,8 +101,6 @@ namespace api1.Controllers
                     try
                     {
                         coordinates.Add(item);
-                        Point newPoint = new Point(Guid.NewGuid(), item);
-                        var encoded = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(newPoint));
 
                         GraphQLResponse<ResponseType>? response =  await _service.Get(firstCoords, item);
 
@@ -106,25 +108,19 @@ namespace api1.Controllers
                         {
                             if (response.Data.Plan.Itineraries.Count > 0)
                             {
-                                TimeSpan time = TimeSpan.FromMilliseconds(response.Data.Plan.Itineraries[0].EndTime);
-                                DateTime result = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-                                result = result.Add(time);
-
-                                TimeSpan time2 = TimeSpan.FromMilliseconds(response.Data.Plan.Itineraries[0].StartTime);
-                                DateTime result2 = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-                                result2 = result.Add(time);
-
-                                var encodedResponse = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(response));
+                                ReturnResponse responsse = new ReturnResponse(Guid.NewGuid(), item, response.Data.Plan.Itineraries);
+                                string stringAnswer = JsonSerializer.Serialize(responsse).ToLower();
+                                var encodedResponse = Encoding.UTF8.GetBytes(stringAnswer);
                                 await webSocket.SendAsync(
-                                    new ArraySegment<byte>(encoded, 0, JsonSerializer.Serialize(newPoint).Length),
-                                    //new ArraySegment<byte>(encodedResponse, 0, JsonSerializer.Serialize(response).Length),
+                                    new ArraySegment<byte>(encodedResponse, 0, stringAnswer.Length),
                                     WebSocketMessageType.Text,
                                     true,
                                     CancellationToken.None);
 
-                                string newValue = JsonSerializer.Serialize(item);
-                                
-                                await CoordinatesLoop(firstCoords, newValue, coordinates, webSocket, count);
+                                Coordinates newValue = item;
+
+                                rotaitingAngle = rotaitingAngle + 2 * Math.PI / 6;
+                                await CoordinatesLoop(firstCoords, newValue, rotaitingAngle, coordinates, webSocket);
                             }
                         }
                     }
@@ -141,7 +137,6 @@ namespace api1.Controllers
         {
             // currentCoordinate = JsonSerializer.Deserialize<Coordinates>(oldCoordinates);
             double r = 0.00433;
-
             List<Coordinates> coordinates = new List<Coordinates>();
             for (var i = 1; i <= 6; i++)
             {
